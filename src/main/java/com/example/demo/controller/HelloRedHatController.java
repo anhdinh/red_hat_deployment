@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.ErrorDto;
-import com.example.demo.model.UserModel;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.model.UserEntity;
+import com.example.demo.repository.UserMysqlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +14,14 @@ import java.util.Date;
 public class HelloRedHatController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserMysqlRepository mysqlRepository;
 
     @GetMapping("/")
     public ResponseEntity<?> hello() {
         try {
-            UserModel userModel = UserModel.builder().username("test").password("1234")
-                    .birthDay(new Date()).build();
-            UserModel savedUser = userRepository.save(userModel);
+            UserEntity userModel = UserEntity.builder().username("test").password("1234")
+                    .dateOfBirth(new Date()).build();
+            UserEntity savedUser = mysqlRepository.save(userModel);
             return ResponseEntity.ok(savedUser);
         } catch (Exception ex) {
             return ResponseEntity.internalServerError().body(
