@@ -11,10 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
-import java.util.Optional;
 
 import static com.example.demo.utils.DateUtils.convertStringToDate;
 

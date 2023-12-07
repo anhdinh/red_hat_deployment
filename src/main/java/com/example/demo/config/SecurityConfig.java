@@ -43,13 +43,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .requestMatchers("/welcome").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/admin").hasAnyRole("ADMIN")
-                .requestMatchers("/user/register").permitAll()
-                .requestMatchers("/login").permitAll()
-                .anyRequest()
-                .authenticated()
+        http.authorizeRequests().requestMatchers("/*").permitAll()
+//                .requestMatchers("/welcome").hasAnyRole("USER", "ADMIN")
+//                .requestMatchers("/admin").hasAnyRole("ADMIN")
+//                .requestMatchers("/user/register").permitAll()
+//                .requestMatchers("/login").permitAll()
+//                .anyRequest()
+//                .authenticated()
                 .and()
                 .formLogin(login -> {
                     withDefaults();
